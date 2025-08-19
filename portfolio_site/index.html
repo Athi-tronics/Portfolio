@@ -30,6 +30,7 @@
       overflow-x: hidden;
     }
     img { max-width: 100%; height: auto; display: block; }
+
     /* Hero Section */
     #hero {
       position: relative;
@@ -45,10 +46,7 @@
     #hero::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-image: url('img/hero-bg.png');
       background-size: cover;
       background-position: center;
@@ -82,9 +80,8 @@
       text-decoration: none;
       transition: transform 0.3s ease;
     }
-    #hero .scroll-down:hover {
-      transform: translateY(5px);
-    }
+    #hero .scroll-down:hover { transform: translateY(5px); }
+
     /* Projects Section */
     #projects {
       width: 100%;
@@ -99,118 +96,89 @@
       grid-gap: 2rem;
       align-items: center;
     }
-    .project-header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
+    .project-header { display: flex; flex-direction: column; align-items: flex-start; }
     .project-year {
-      font-size: 0.8rem;
-      font-weight: 300;
-      color: var(--color-muted);
+      font-size: 0.8rem; font-weight: 300; color: var(--color-muted);
       margin-bottom: 0.5rem;
     }
     .project-title {
       font-family: var(--font-serif);
-      font-size: 2.2rem;
-      margin: 0;
-      line-height: 1.1;
-      text-transform: capitalize;
+      font-size: 2.2rem; margin: 0; line-height: 1.1; text-transform: capitalize;
     }
-    .project-subtitle {
-      font-style: italic;
-      font-size: 1rem;
-      margin-top: 0.3rem;
-      color: var(--color-muted);
-    }
+    .project-subtitle { font-style: italic; font-size: 1rem; margin-top: 0.3rem; color: var(--color-muted); }
     .project-content img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 0.3rem;
+      width: 100%; height: 350px; object-fit: cover; object-position: center; border-radius: 0.3rem;
     }
     .project-description {
       grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 2rem;
-      margin-top: 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      grid-gap: 2rem; margin-top: 1.5rem;
     }
-    .project-description p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--color-text);
-    }
-    .project-meta {
-      display: flex;
-      flex-direction: column;
-      font-size: 0.9rem;
-      color: var(--color-muted);
-    }
-    .project-meta .project-role {
-      margin-bottom: 1rem;
-      font-weight: 600;
-      color: var(--color-text);
-    }
-    .project-meta .project-links h5 {
-      margin: 0 0 0.5rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--color-text);
-    }
-    .project-meta .project-links ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .project-meta .project-links li {
-      margin-bottom: 0.4rem;
-    }
-    .project-meta .project-links a {
-      color: var(--color-link);
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .project-meta .project-links a:hover {
-      text-decoration: underline;
-    }
+    .project-description p { margin: 0; font-size: 0.95rem; color: var(--color-text); }
+    .project-meta { display: flex; flex-direction: column; font-size: 0.9rem; color: var(--color-muted); }
+    .project-meta .project-role { margin-bottom: 1rem; font-weight: 600; color: var(--color-text); }
+    .project-meta .project-links h5 { margin: 0 0 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--color-text); }
+    .project-meta .project-links ul { list-style: none; padding: 0; margin: 0; }
+    .project-meta .project-links li { margin-bottom: 0.4rem; }
+    .project-meta .project-links a { color: var(--color-link); text-decoration: none; cursor: pointer; }
+    .project-meta .project-links a:hover { text-decoration: underline; }
+
     /* Footer */
     footer {
-      text-align: right;
-      padding: 2rem var(--padding-horizontal);
+      text-align: right; padding: 2rem var(--padding-horizontal);
       border-top: 1px solid rgba(255,255,255,0.05);
     }
-    footer .about-link {
-      color: var(--color-link);
-      text-decoration: none;
-      font-size: 1rem;
-      transition: opacity 0.3s ease;
-    }
-    footer .about-link:hover {
-      opacity: 0.7;
-    }
+    footer .about-link { color: var(--color-link); text-decoration: none; font-size: 1rem; transition: opacity 0.3s ease; }
+    footer .about-link:hover { opacity: 0.7; }
+
     /* Responsive */
-    @media (max-width: 768px) {
-      #hero h1 { font-size: 2.5rem; }
-    }
+    @media (max-width: 768px) { #hero h1 { font-size: 2.5rem; } }
+
     /* Custom cursor */
-    body.custom-cursor {
-      cursor: none;
-    }
+    body.custom-cursor { cursor: none; }
     .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba(255,255,255,0.7);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease-out, background-color 0.2s;
-      z-index: 10000;
+      position: fixed; top: 0; left: 0; width: 20px; height: 20px;
+      border: 2px solid rgba(255,255,255,0.7); border-radius: 50%;
+      pointer-events: none; transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out, background-color 0.2s; z-index: 10000;
     }
+
+    /* -------- Modal Overlay -------- */
+    #doc-modal {
+      position: fixed; inset: 0;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(2px);
+      z-index: 9999; padding: 2rem;
+    }
+    #doc-modal.active { display: flex; }
+    #doc-modal .panel {
+      position: relative; width: min(1000px, 92vw); height: 80vh;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(20,20,20,0.8);
+      border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    #doc-modal .panel .toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .6rem .9rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: var(--color-muted); font-size: .9rem;
+    }
+    #doc-modal .panel .close-btn {
+      appearance: none; border: none; background: transparent; color: var(--color-text);
+      font-size: 1.2rem; cursor: pointer; padding: .2rem .4rem; line-height: 1;
+    }
+    #doc-frame { display: none; width: 100%; height: 100%; border: 0; background: #111; }
+    #md-container {
+      display: none; padding: 1rem 1.25rem; overflow: auto;
+      color: var(--color-text); font-family: var(--font-sans);
+    }
+    #md-container h1, #md-container h2, #md-container h3 {
+      font-family: var(--font-serif);
+      margin: 1rem 0 .5rem;
+    }
+    #md-container p { margin: .6rem 0; color: var(--color-text); }
+    #md-container a { color: var(--color-link); }
+    #md-container ul { padding-left: 1.1rem; }
   </style>
 </head>
 <body>
@@ -236,6 +204,18 @@
 
   <!-- Custom cursor element -->
   <div class="cursor" id="custom-cursor"></div>
+
+  <!-- Modal Overlay -->
+  <div id="doc-modal" role="dialog" aria-modal="true" aria-label="Document viewer">
+    <div class="panel">
+      <div class="toolbar">
+        <span id="doc-title">Document</span>
+        <button class="close-btn" id="doc-close" aria-label="Close">&times;</button>
+      </div>
+      <iframe id="doc-frame" title="Document viewer"></iframe>
+      <div id="md-container"></div>
+    </div>
+  </div>
 
   <script>
     // Category data representing portfolio sections
@@ -329,11 +309,10 @@
         scrollLink.addEventListener('click', (e) => {
           e.preventDefault();
           const target = document.querySelector('#projects');
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
       }
+
       // Render categories
       const container = document.getElementById('projects');
       if (!container) return;
@@ -341,6 +320,7 @@
       projects.forEach((proj) => {
         const article = document.createElement('article');
         article.className = 'project';
+
         // Header
         const headerDiv = document.createElement('div');
         headerDiv.className = 'project-header';
@@ -356,6 +336,7 @@
         headerDiv.appendChild(yearSpan);
         headerDiv.appendChild(titleEl);
         headerDiv.appendChild(subEl);
+
         // Image
         const contentDiv = document.createElement('div');
         contentDiv.className = 'project-content';
@@ -363,63 +344,173 @@
         imgEl.src = proj.image;
         imgEl.alt = proj.title;
         contentDiv.appendChild(imgEl);
-        // Description section
+
+        // Description
         const descWrapper = document.createElement('div');
         descWrapper.className = 'project-description';
         const descText = document.createElement('p');
         descText.textContent = proj.description;
+
         const metaDiv = document.createElement('div');
         metaDiv.className = 'project-meta';
         const roleDiv = document.createElement('div');
         roleDiv.className = 'project-role';
         roleDiv.textContent = proj.role;
+
         const linksDiv = document.createElement('div');
         linksDiv.className = 'project-links';
         const linksTitle = document.createElement('h5');
         linksTitle.textContent = 'Links';
         linksDiv.appendChild(linksTitle);
+
         const ul = document.createElement('ul');
         (proj.links || []).forEach((item) => {
           const li = document.createElement('li');
           const a = document.createElement('a');
           a.href = item.url;
           a.textContent = item.name;
-          // Always open links in new tab
-          a.target = '_blank';
+          // Intercept click to open in modal
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            openInOverlay(item.url, item.name);
+          });
           li.appendChild(a);
           ul.appendChild(li);
         });
+
         linksDiv.appendChild(ul);
         metaDiv.appendChild(roleDiv);
         metaDiv.appendChild(linksDiv);
+
         descWrapper.appendChild(descText);
         descWrapper.appendChild(metaDiv);
+
         // Assemble article
         article.appendChild(headerDiv);
         article.appendChild(contentDiv);
         article.appendChild(descWrapper);
         container.appendChild(article);
       });
+
+      // After dynamic links exist, enhance cursor hover for them
+      setupCursorHover();
     });
 
-    // Custom cursor logic
+    // -------- Modal logic (PDF + Markdown) --------
+    const modal = document.getElementById('doc-modal');
+    const docTitleEl = document.getElementById('doc-title');
+    const closeBtn = document.getElementById('doc-close');
+    const frame = document.getElementById('doc-frame');
+    const mdContainer = document.getElementById('md-container');
+
+    function openInOverlay(rawUrl, title = 'Document') {
+      const url = normalizeUrl(rawUrl);
+      const lower = url.toLowerCase();
+      docTitleEl.textContent = title;
+
+      // Try to display PDFs in iframe
+      if (lower.endsWith('.pdf')) {
+        mdContainer.style.display = 'none';
+        frame.style.display = 'block';
+        frame.src = url;
+        modal.classList.add('active');
+        return;
+      }
+
+      // Render README.md (or other .md) as HTML
+      if (lower.endsWith('.md')) {
+        fetchMarkdown(url)
+          .then((md) => {
+            mdContainer.innerHTML = renderMarkdown(md);
+            frame.src = '';
+            frame.style.display = 'none';
+            mdContainer.style.display = 'block';
+            modal.classList.add('active');
+          })
+          .catch(() => window.open(url, '_blank', 'noopener'));
+        return;
+      }
+
+      // Fallback for other file types / blocked embeds
+      window.open(url, '_blank', 'noopener');
+    }
+
+    function closeOverlay() {
+      modal.classList.remove('active');
+      frame.src = '';
+      mdContainer.innerHTML = '';
+      mdContainer.style.display = 'none';
+      frame.style.display = 'none';
+    }
+
+    closeBtn.addEventListener('click', closeOverlay);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeOverlay(); });
+
+    // Convert GitHub "blob" URLs to raw for fetch/render
+    function normalizeUrl(u) {
+      try {
+        const url = new URL(u);
+        if (url.hostname === 'github.com' && url.pathname.includes('/blob/')) {
+          return u.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+        }
+      } catch (_) {}
+      return u;
+    }
+
+    // Fetch Markdown safely (CORS allowed from raw.githubusercontent.com)
+    function fetchMarkdown(u) {
+      return fetch(u).then(r => r.ok ? r.text() : Promise.reject());
+    }
+
+    // Tiny markdown renderer (headings, bold/italic, links, lists, paragraphs)
+    function renderMarkdown(src) {
+      const esc = s => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      let html = esc(src);
+
+      // headings
+      html = html.replace(/^### (.*)$/gmi, '<h3>$1</h3>')
+                 .replace(/^## (.*)$/gmi, '<h2>$1</h2>')
+                 .replace(/^# (.*)$/gmi, '<h1>$1</h1>');
+
+      // bold/italic
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                 .replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+      // links
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, t, u) =>
+        `<a href="${normalizeUrl(u)}" target="_blank" rel="noopener">${t}</a>`
+      );
+
+      // lists
+      html = html.replace(/^(?:- |\* )(.*)$/gmi, '<li>$1</li>')
+                 .replace(/(?:<li>[\s\S]*?<\/li>\n?)+/g, m => `<ul>${m}</ul>`);
+
+      // simple paragraphs
+      html = html.replace(/(?:^|\n)([^\n<][^\n]*)/g, (_m, p) => `<p>${p}</p>`);
+
+      return html;
+    }
+
+    // -------- Custom cursor --------
     document.body.classList.add('custom-cursor');
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = `${e.clientX}px`;
       cursor.style.top = `${e.clientY}px`;
     });
-    // Scale cursor when hovering over links and buttons
-    document.querySelectorAll('a, button').forEach((el) => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        cursor.style.backgroundColor = 'rgba(255,255,255,0.3)';
+
+    function setupCursorHover() {
+      document.querySelectorAll('a, button').forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+          cursor.style.backgroundColor = 'rgba(255,255,255,0.3)';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+          cursor.style.backgroundColor = 'transparent';
+        });
       });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-        cursor.style.backgroundColor = 'transparent';
-      });
-    });
+    }
   </script>
 </body>
 </html>
