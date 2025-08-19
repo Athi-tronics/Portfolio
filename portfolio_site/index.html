@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Portfolio</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --color-bg: #000;
+  --color-text: #f8f8f8;
+  --color-muted: #a7a7a7;
+  --color-link: #dddddd;
+  --max-width: 1200px;
+  --padding-horizontal: 2rem;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+/* Hero Section */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #1a1a1a, #000);
+}
+#hero h1 {
+  font-size: 4rem;
+  margin: 0.2rem 0;
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+#hero h2 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+#hero .hero-description {
+  max-width: 50rem;
+  margin: 0 auto 0.5rem;
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+#hero .scroll-down {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+#hero .scroll-down:hover {
+  transform: translateY(5px);
+}
+/* Projects Section */
+#projects {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem var(--padding-horizontal);
+}
+.project {
+  margin-bottom: 6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  align-items: center;
+}
+.project-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.project-year {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+.project-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  margin: 0;
+  line-height: 1.1;
+  text-transform: capitalize;
+}
+.project-subtitle {
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  color: var(--color-muted);
+}
+.project-content img {
+  width: 100%;
+  border-radius: 0.3rem;
+}
+.project-description {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  margin-top: 1.5rem;
+}
+.project-description p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.project-meta .project-role {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.project-meta .project-press h5 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.project-meta .project-press ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.project-meta .project-press li {
+  margin-bottom: 0.4rem;
+}
+.project-meta .project-press a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+.project-meta .project-press a:hover {
+  text-decoration: underline;
+}
+/* Footer */
+footer {
+  text-align: right;
+  padding: 2rem var(--padding-horizontal);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+footer .about-link {
+  color: var(--color-link);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+footer .about-link:hover {
+  opacity: 0.7;
+}
+/* About Page (not used in this file) */
+#about-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem var(--padding-horizontal);
+  text-align: center;
+}
+#about-page .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 2rem;
+  font-family: var(--font-serif);
+}
+#about-page h1 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+#about-page p {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+#about-page .back-link {
+  margin-top: 2rem;
+  color: var(--color-link);
+  text-decoration: none;
+}
+#about-page .back-link:hover {
+  text-decoration: underline;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 3rem;
+  }
+  #hero h2 {
+    font-size: 1.2rem;
+  }
+  .project {
+    grid-template-columns: 1fr;
+  }
+  .project-description {
+    grid-template-columns: 1fr;
+  }
+  footer {
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+<header id="hero">
+  <div class="hero-content">
+    <h1>Your Name</h1>
+    <h2>Creative Professional</h2>
+    <p class="hero-description">This is a short description about yourself or your creative practice. You can highlight your current role and what drives your work.</p>
+    <p class="hero-description">Craft unique stories through design and technology.</p>
+  </div>
+  <a href="#projects" class="scroll-down" aria-label="Scroll down">&#x2193;</a>
+</header>
+
+<main id="projects">
+  <!-- Projects will be injected here -->
+  <noscript>Please enable JavaScript to view the projects.</noscript>
+</main>
+
+<footer>
+  <a href="about.html" class="about-link">About</a>
+</footer>
+
+<script>
+// Project data
+const projects = [
+  {
+    year: "2025",
+    title: "Adidas Level up your Game",
+    subtitle: "Pop-up Arcade Experience",
+    image: "https://source.unsplash.com/800x600/?arcade,event",
+    description: "In Soho NYC, adidas and Foot Locker came together to launch a pop-up arcade experience that blended gaming nostalgia with street-ready style. Guests explored the arcade through exclusive giveaways, a dedicated style bar and an AR-powered sneaker rotation. The result celebrated sneaker culture in an unexpected way while reinforcing the brand’s role at the intersection of music, style and community.",
+    role: "Experience — Creative Director",
+    press: [
+      { name: "Foot Locker Real", url: "#" },
+      { name: "Bizbash", url: "#" }
+    ]
+  },
+  {
+    year: "2024",
+    title: "Disney Mufasa",
+    subtitle: "Hologram Installation",
+    image: "https://source.unsplash.com/800x600/?hologram,installation",
+    description: "To celebrate the release of Mufasa: The Lion King, we collaborated with a major studio to create a hologram installation that brought one of the film’s most iconic moments to life. This immersive experience blended cutting-edge technology with timeless storytelling to reimagine the legendary appearance in the clouds as a stunning, life‑sized hologram.",
+    role: "Hologram Installation — Creative Director",
+    press: [
+      { name: "Studio Press", url: "#" },
+      { name: "Pop Media", url: "#" }
+    ]
+  }
+];
+// Smooth scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollLink = document.querySelector('#hero .scroll-down');
+  if (scrollLink) {
+    scrollLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector('#projects');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+  // Render projects
+  const container = document.getElementById('projects');
+  if (!container) return;
+  container.innerHTML = '';
+  projects.forEach((proj) => {
+    const article = document.createElement('article');
+    article.className = 'project';
+    // Header
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'project-header';
+    const yearSpan = document.createElement('span');
+    yearSpan.className = 'project-year';
+    yearSpan.textContent = proj.year;
+    const titleEl = document.createElement('h3');
+    titleEl.className = 'project-title';
+    titleEl.textContent = proj.title;
+    const subEl = document.createElement('h4');
+    subEl.className = 'project-subtitle';
+    subEl.textContent = proj.subtitle || '';
+    headerDiv.appendChild(yearSpan);
+    headerDiv.appendChild(titleEl);
+    headerDiv.appendChild(subEl);
+    // Image
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'project-content';
+    const imgEl = document.createElement('img');
+    imgEl.src = proj.image;
+    imgEl.alt = proj.title;
+    contentDiv.appendChild(imgEl);
+    // Description section
+    const descWrapper = document.createElement('div');
+    descWrapper.className = 'project-description';
+    const descText = document.createElement('p');
+    descText.textContent = proj.description;
+    const metaDiv = document.createElement('div');
+    metaDiv.className = 'project-meta';
+    const roleDiv = document.createElement('div');
+    roleDiv.className = 'project-role';
+    roleDiv.textContent = proj.role;
+    const pressDiv = document.createElement('div');
+    pressDiv.className = 'project-press';
+    const pressTitle = document.createElement('h5');
+    pressTitle.textContent = 'Press';
+    pressDiv.appendChild(pressTitle);
+    const ul = document.createElement('ul');
+    (proj.press || []).forEach((item) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = item.url || '#';
+      a.textContent = item.name;
+      a.target = '_blank';
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    pressDiv.appendChild(ul);
+    metaDiv.appendChild(roleDiv);
+    metaDiv.appendChild(pressDiv);
+    descWrapper.appendChild(descText);
+    descWrapper.appendChild(metaDiv);
+    article.appendChild(headerDiv);
+    article.appendChild(contentDiv);
+    article.appendChild(descWrapper);
+    container.appendChild(article);
+  });
+});
+</script>
+</body>
+</html>
