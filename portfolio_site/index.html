@@ -125,6 +125,9 @@
     }
     .project-content img {
       width: 100%;
+      height: 350px;
+      object-fit: cover;
+      object-position: center;
       border-radius: 0.3rem;
     }
     .project-description {
@@ -224,6 +227,24 @@
     @media (max-width: 768px) {
       #hero h1 { font-size: 2.5rem; }
     }
+
+    /* Custom cursor */
+    body.custom-cursor {
+      cursor: none;
+    }
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out, background-color 0.2s;
+      z-index: 10000;
+    }
   </style>
 </head>
 <body>
@@ -252,6 +273,9 @@
   <footer>
     <a href="about.html" class="about-link">About</a>
   </footer>
+
+  <!-- Custom cursor element -->
+  <div class="cursor" id="custom-cursor"></div>
 
   <script>
     // Category data representing portfolio sections
@@ -400,15 +424,8 @@
           const a = document.createElement('a');
           a.href = item.url;
           a.textContent = item.name;
-          // Determine whether to open PDF in modal
-          if (a.href.endsWith('.pdf')) {
-            a.addEventListener('click', (e) => {
-              e.preventDefault();
-              showPdfModal(a.href);
-            });
-          } else {
-            a.target = '_blank';
-          }
+          // Always open links in new tab; PDFs will load normally
+          a.target = '_blank';
           li.appendChild(a);
           ul.appendChild(li);
         });
@@ -443,6 +460,25 @@
       if (e.target === pdfModal) {
         closePdfModal();
       }
+    });
+
+    // Custom cursor logic
+    document.body.classList.add('custom-cursor');
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+    // Scale cursor when hovering over links and buttons
+    document.querySelectorAll('a, button').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursor.style.backgroundColor = 'rgba(255,255,255,0.3)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursor.style.backgroundColor = 'transparent';
+      });
     });
   </script>
 </body>
