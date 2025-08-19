@@ -128,4 +128,455 @@
       text-align: right; padding: 2rem var(--padding-horizontal);
       border-top: 1px solid rgba(255,255,255,0.05);
     }
-    footer .about-link { color: var(--color-link); text-decoration: none; font-size: 1rem; transition: opac
+    footer .about-link { color: var(--color-link); text-decoration: none; font-size: 1rem; transition: opacity 0.3s ease; }
+    footer .about-link:hover { opacity: 0.7; }
+
+    /* Responsive */
+    @media (max-width: 768px) { #hero h1 { font-size: 2.5rem; } }
+
+    /* Custom cursor */
+    body.custom-cursor { cursor: none; }
+    .cursor {
+      position: fixed; top: 0; left: 0; width: 20px; height: 20px;
+      border: 2px solid rgba(255,255,255,0.7); border-radius: 50%;
+      pointer-events: none; transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out, background-color 0.2s; z-index: 10000;
+    }
+
+    /* -------- Modal Overlay -------- */
+    #doc-modal {
+      position: fixed; inset: 0;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(2px);
+      z-index: 9999; padding: 2rem;
+    }
+    #doc-modal.active { display: flex; }
+    #doc-modal .panel {
+      position: relative; width: min(1000px, 92vw); height: 80vh;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(20,20,20,0.8);
+      border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    #doc-modal .panel .toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .6rem .9rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: var(--color-muted); font-size: .9rem;
+    }
+    #doc-modal .panel .close-btn {
+      appearance: none; border: none; background: transparent; color: var(--color-text);
+      font-size: 1.2rem; cursor: pointer; padding: .2rem .4rem; line-height: 1;
+    }
+    #doc-frame { display: none; width: 100%; height: 100%; border: 0; background: #111; }
+    #pdf-container {
+      display: none; width: 100%; height: 100%; overflow: auto; padding: 0.75rem 1rem;
+      background: #111;
+    }
+    #pdf-container canvas { display:block; margin: 0 auto 12px; max-width: 100%; height: auto; }
+    #md-container {
+      display: none; padding: 1rem 1.25rem; overflow: auto;
+      color: var(--color-text); font-family: var(--font-sans);
+    }
+    #md-container h1, #md-container h2, #md-container h3 {
+      font-family: var(--font-serif);
+      margin: 1rem 0 .5rem;
+    }
+    #md-container p { margin: .6rem 0; color: var(--color-text); }
+    #md-container a { color: var(--color-link); }
+    #md-container ul { padding-left: 1.1rem; }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header id="hero">
+    <div class="hero-content">
+      <h1>Athenkosi Hlonyane</h1>
+      <h2>Engineer | Automation &amp; Control Specialist</h2>
+      <p class="hero-description">A curated portfolio showcasing my academic achievements, professional experiences, technical projects, certificates, and skills.</p>
+    </div>
+    <a href="#projects" class="scroll-down" aria-label="Scroll down">&darr;</a>
+  </header>
+
+  <!-- Projects (Categories) Section -->
+  <main id="projects">
+    <noscript>Please enable JavaScript to view the content.</noscript>
+  </main>
+
+  <footer>
+    <a href="about.html" class="about-link">About</a>
+  </footer>
+
+  <!-- Custom cursor element -->
+  <div class="cursor" id="custom-cursor"></div>
+
+  <!-- Modal Overlay -->
+  <div id="doc-modal" role="dialog" aria-modal="true" aria-label="Document viewer">
+    <div class="panel">
+      <div class="toolbar">
+        <span id="doc-title">Document</span>
+        <button class="close-btn" id="doc-close" aria-label="Close">&times;</button>
+      </div>
+      <iframe id="doc-frame" title="Document viewer"></iframe>
+      <div id="pdf-container"></div>
+      <div id="md-container"></div>
+    </div>
+  </div>
+
+  <script>
+    // Category data representing portfolio sections
+    const projects = [
+      {
+        year: "2025",
+        title: "Curriculum Vitae",
+        subtitle: "Latest CV & Variants",
+        image: "img/cv.png",
+        description: "Explore my current CV and role-focused variants tailored for different engineering roles.",
+        role: "Category — CV",
+        links: [
+          { name: "Main CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/CV_AHlonyane_2025_Main.pdf" },
+          { name: "Instrumentation CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/variants/CV_2025_Instrumentation.pdf" },
+          { name: "Plant ME&I Project CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/variants/CV_2025_Plant_MEI_Project.pdf" },
+          { name: "Automation CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/variants/CV_2025_Automation_Control.pdf" }
+        ]
+      },
+      {
+        year: "2024",
+        title: "Education",
+        subtitle: "Academic Qualifications",
+        image: "img/education.png",
+        description: "Details of my academic journey and qualifications from various universities.",
+        role: "Category — Education",
+        links: [
+          { name: "Stellenbosch University — BEng Mechatronic", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/tertiary/stellenbosch/2023_SU_BEng_Mechatronic.pdf" },
+          { name: "Technische Universität München — Exchange", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/tertiary/tum/2021_TUM_Exchange_Certificate.pdf" },
+          { name: "University of Pretoria — BEng (Hons) Electronic", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/tertiary/up/2025_UP_BEngHons_APC_Registration.pdf" },
+          { name: "Secondary School Records", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/secondary/2017_NSC_Certificate.pdf" }
+        ]
+      },
+      {
+        year: "2025",
+        title: "Experience",
+        subtitle: "Professional Experience",
+        image: "img/experience.png",
+        description: "Highlights of my professional work experiences and internships in engineering roles.",
+        role: "Category — Experience",
+        links: [
+          { name: "Glencore Artisan (Specialist) 2025", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/glencore-artisan-2025/README.md" },
+          { name: "Glencore Engineer-in-Training 2024", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/glencore-eit-2024/README.md" },
+          { name: "Glencore Instrumentation Vacation 2022", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/glencore-vac/2022_Glencore_Vacation_Certificate.pdf" },
+          { name: "VWSA Assembly/Mechatronics 2019–2020", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/vwsa-vac/2020_VWSA_Vac_Training_441.pdf" }
+        ]
+      },
+      {
+        year: "2024",
+        title: "Projects",
+        subtitle: "Technical Projects",
+        image: "img/projects.png",
+        description: "A showcase of my technical and academic projects, including control systems and final year capstone.",
+        role: "Category — Projects",
+        links: [
+          { name: "Charge-chute Fans Control", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/projects/charge-chute-fans/presentations/Athenkosi_Hlonyane_Project_Presentation.pdf" },
+          { name: "Final Year Project (FYP)", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/projects/fyp-capstone-project/presentations/Progress_Presentation_21879168.pdf" }
+        ]
+      },
+      {
+        year: "2024",
+        title: "Certificates",
+        subtitle: "Professional Courses",
+        image: "img/certificates.png",
+        description: "List of professional courses and certificates I have completed, demonstrating continuous learning.",
+        role: "Category — Certificates",
+        links: [
+          { name: "IO-Link Certificate", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/certificates/io-link/2024_IO-Link_IIoT_Certificate.pdf" },
+          { name: "Predictive Maintenance", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/certificates/predictive/2024_Predictive_Maintenance_Certificate.pdf" },
+          { name: "IoT Introduction", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/certificates/iot-intro/2024_IoT_Intro_Certificate.pdf" }
+        ]
+      },
+      {
+        year: "2024",
+        title: "Skills",
+        subtitle: "Skillset & Evidence",
+        image: "img/skills.png",
+        description: "My core technical skills and evidence linking to corresponding projects and experiences.",
+        role: "Category — Skills",
+        links: [
+          { name: "Automation & Control", url: "https://github.com/Athi-tronics/Portfolio/blob/main/skills/README.md#automation--control" },
+          { name: "Instrumentation", url: "https://github.com/Athi-tronics/Portfolio/blob/main/skills/README.md#instrumentation" },
+          { name: "Projects & Governance", url: "https://github.com/Athi-tronics/Portfolio/blob/main/skills/README.md#projects--governance" }
+        ]
+      }
+    ];
+
+    // Detect your Pages site base (/Portfolio/)
+    const PAGES_BASE = (() => {
+      const { origin, pathname } = new URL(document.baseURI);
+      const parts = pathname.split('/').filter(Boolean);
+      // project site: /Portfolio/... -> base is /Portfolio/
+      const base = parts.length ? `/${parts[0]}/` : '/';
+      return origin + base;
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Smooth scrolling
+      const scrollLink = document.querySelector('#hero .scroll-down');
+      if (scrollLink) {
+        scrollLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector('#projects');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Render categories
+      const container = document.getElementById('projects');
+      if (!container) return;
+      container.innerHTML = '';
+      projects.forEach((proj) => {
+        const article = document.createElement('article');
+        article.className = 'project';
+
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'project-header';
+        const yearSpan = document.createElement('span');
+        yearSpan.className = 'project-year';
+        yearSpan.textContent = proj.year;
+        const titleEl = document.createElement('h3');
+        titleEl.className = 'project-title';
+        titleEl.textContent = proj.title;
+        const subEl = document.createElement('h4');
+        subEl.className = 'project-subtitle';
+        subEl.textContent = proj.subtitle || '';
+        headerDiv.appendChild(yearSpan); headerDiv.appendChild(titleEl); headerDiv.appendChild(subEl);
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'project-content';
+        const imgEl = document.createElement('img');
+        imgEl.src = proj.image; imgEl.alt = proj.title;
+        contentDiv.appendChild(imgEl);
+
+        const descWrapper = document.createElement('div');
+        descWrapper.className = 'project-description';
+        const descText = document.createElement('p');
+        descText.textContent = proj.description;
+
+        const metaDiv = document.createElement('div'); metaDiv.className = 'project-meta';
+        const roleDiv = document.createElement('div'); roleDiv.className = 'project-role'; roleDiv.textContent = proj.role;
+
+        const linksDiv = document.createElement('div'); linksDiv.className = 'project-links';
+        const linksTitle = document.createElement('h5'); linksTitle.textContent = 'Links'; linksDiv.appendChild(linksTitle);
+
+        const ul = document.createElement('ul');
+        (proj.links || []).forEach((item) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.url;
+          a.textContent = item.name;
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            openInOverlay(item.url, item.name);
+          });
+          li.appendChild(a); ul.appendChild(li);
+        });
+        linksDiv.appendChild(ul);
+
+        metaDiv.appendChild(roleDiv); metaDiv.appendChild(linksDiv);
+        descWrapper.appendChild(descText); descWrapper.appendChild(metaDiv);
+
+        article.appendChild(headerDiv);
+        article.appendChild(contentDiv);
+        article.appendChild(descWrapper);
+        container.appendChild(article);
+      });
+
+      setupCursorHover();
+    });
+
+    // -------- Modal logic (PDF + Markdown) --------
+    const modal = document.getElementById('doc-modal');
+    const docTitleEl = document.getElementById('doc-title');
+    const closeBtn = document.getElementById('doc-close');
+    const frame = document.getElementById('doc-frame');
+    const pdfContainer = document.getElementById('pdf-container');
+    const mdContainer = document.getElementById('md-container');
+
+    function closeOverlay() {
+      modal.classList.remove('active');
+      frame.src = '';
+      pdfContainer.innerHTML = '';
+      mdContainer.innerHTML = '';
+      frame.style.display = 'none';
+      pdfContainer.style.display = 'none';
+      mdContainer.style.display = 'none';
+    }
+    closeBtn.addEventListener('click', closeOverlay);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeOverlay(); });
+
+    async function openInOverlay(rawUrl, title = 'Document') {
+      docTitleEl.textContent = title;
+
+      const url = normalizeUrl(rawUrl);
+      const lower = url.toLowerCase();
+
+      // 1) PDFs: try to use same-origin Pages path so iframe can render
+      if (lower.endsWith('.pdf')) {
+        const pagesUrl = pagesUrlFromGithub(url);
+        if (pagesUrl && await existsSameOrigin(pagesUrl)) {
+          showIframe(pagesUrl);
+          return;
+        }
+        // Fallback: render via PDF.js (prevents download)
+        renderPdfWithPdfJs(url);
+        return;
+      }
+
+      // 2) Markdown: fetch & render
+      if (lower.endsWith('.md')) {
+        try {
+          const md = await fetchMarkdown(url);
+          mdContainer.innerHTML = renderMarkdown(md);
+          mdContainer.style.display = 'block';
+          frame.style.display = 'none';
+          pdfContainer.style.display = 'none';
+          modal.classList.add('active');
+        } catch {
+          window.open(url, '_blank', 'noopener');
+        }
+        return;
+      }
+
+      // 3) Other file types -> new tab (explicit)
+      window.open(url, '_blank', 'noopener');
+    }
+
+    function showIframe(src) {
+      mdContainer.style.display = 'none';
+      pdfContainer.style.display = 'none';
+      frame.src = src;
+      frame.style.display = 'block';
+      modal.classList.add('active');
+    }
+
+    // Try HEAD request to same-origin path
+    async function existsSameOrigin(pagesUrl) {
+      try {
+        const res = await fetch(pagesUrl, { method: 'HEAD' });
+        return res.ok;
+      } catch { return false; }
+    }
+
+    // Map GitHub raw/blob URLs to your Pages path (/Portfolio/..)
+    function pagesUrlFromGithub(u) {
+      try {
+        const url = new URL(u);
+        // raw.githubusercontent.com/Athi-tronics/Portfolio/main/<path>
+        if (url.hostname === 'raw.githubusercontent.com') {
+          const parts = url.pathname.split('/').filter(Boolean);
+          // [Athi-tronics, Portfolio, main, ...rest]
+          if (parts[0] === 'Athi-tronics' && parts[1] === 'Portfolio' && parts[2] === 'main') {
+            const rest = parts.slice(3).join('/');
+            return PAGES_BASE + rest;
+          }
+        }
+        // github.com/.../blob/main/<path>
+        if (url.hostname === 'github.com' && url.pathname.includes('/blob/')) {
+          const rest = url.pathname.split('/blob/')[1].split('/').slice(1).join('/');
+          return PAGES_BASE + rest;
+        }
+      } catch {}
+      return null;
+    }
+
+    // Convert GitHub "blob" to raw if needed
+    function normalizeUrl(u) {
+      try {
+        const url = new URL(u);
+        if (url.hostname === 'github.com' && url.pathname.includes('/blob/')) {
+          return u.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+        }
+      } catch {}
+      return u;
+    }
+
+    // ------- PDF.js fallback (renders into modal, no download) -------
+    async function renderPdfWithPdfJs(pdfUrl) {
+      try {
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        const pdf = await loadingTask.promise;
+
+        pdfContainer.innerHTML = '';
+        mdContainer.style.display = 'none';
+        frame.style.display = 'none';
+        pdfContainer.style.display = 'block';
+        modal.classList.add('active');
+
+        const viewportScale = 1.2;
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          const page = await pdf.getPage(pageNum);
+          const viewport = page.getViewport({ scale: viewportScale });
+
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          await page.render({ canvasContext: context, viewport }).promise;
+          pdfContainer.appendChild(canvas);
+        }
+      } catch (e) {
+        // If fetching/rendering fails, open in new tab
+        window.open(pdfUrl, '_blank', 'noopener');
+      }
+    }
+
+    // ------- Markdown helpers -------
+    function fetchMarkdown(u) { return fetch(u).then(r => r.ok ? r.text() : Promise.reject()); }
+    function renderMarkdown(src) {
+      const esc = s => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      let html = esc(src);
+      html = html.replace(/^### (.*)$/gmi, '<h3>$1</h3>')
+                 .replace(/^## (.*)$/gmi, '<h2>$1</h2>')
+                 .replace(/^# (.*)$/gmi, '<h1>$1</h1>')
+                 .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                 .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                 .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, t, u) =>
+                    `<a href="${u}" target="_blank" rel="noopener">${t}</a>`)
+                 .replace(/^(?:- |\* )(.*)$/gmi, '<li>$1</li>')
+                 .replace(/(?:<li>[\s\S]*?<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+                 .replace(/(?:^|\n)([^\n<][^\n]*)/g, (_m, p) => `<p>${p}</p>`);
+      return html;
+    }
+
+    // -------- Custom cursor --------
+    document.body.classList.add('custom-cursor');
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+    function setupCursorHover() {
+      document.querySelectorAll('a, button').forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+          cursor.style.backgroundColor = 'rgba(255,255,255,0.3)';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+          cursor.style.backgroundColor = 'transparent';
+        });
+      });
+    }
+  </script>
+
+  <!-- PDF.js (for cross-origin/raw GitHub PDFs that would otherwise download) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+  <script>
+    // Point PDF.js worker to CDN
+    window.addEventListener('load', () => {
+      if (window['pdfjsLib']) {
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      }
+    });
+  </script>
+</body>
+</html>
