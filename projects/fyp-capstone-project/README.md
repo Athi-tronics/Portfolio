@@ -1,4 +1,4 @@
-# IoT Data Logger (Final-Year Project)
+# Temperature Measurement System (Final-Year Project)
 
 **Stack:** ESP32 → sensors → local DB → simple web dashboard  
 **Role:** end-to-end design (sensing chain, firmware, data model, UI)  
