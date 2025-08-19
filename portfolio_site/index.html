@@ -190,44 +190,10 @@
     footer .about-link:hover {
       opacity: 0.7;
     }
-    /* PDF Modal */
-    #pdf-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    #pdf-modal.active {
-      display: flex;
-    }
-    #pdf-modal iframe {
-      width: 80%;
-      height: 80%;
-      border: none;
-      border-radius: 4px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-    #pdf-modal .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-    }
     /* Responsive */
     @media (max-width: 768px) {
       #hero h1 { font-size: 2.5rem; }
     }
-
     /* Custom cursor */
     body.custom-cursor {
       cursor: none;
@@ -264,12 +230,6 @@
     <noscript>Please enable JavaScript to view the content.</noscript>
   </main>
 
-  <!-- PDF Modal -->
-  <div id="pdf-modal">
-    <button class="close-btn" aria-label="Close PDF">&times;</button>
-    <iframe src="" title="PDF Viewer"></iframe>
-  </div>
-
   <footer>
     <a href="about.html" class="about-link">About</a>
   </footer>
@@ -288,10 +248,10 @@
         description: "Explore my current CV and role-focused variants tailored for different engineering roles.",
         role: "Category — CV",
         links: [
-          { name: "Main CV", url: "../Portfolio/cv/CV_AHlonyane_2025_Main.pdf" },
-          { name: "Instrumentation CV", url: "../Portfolio/cv/variants/CV_2025_Instrumentation.pdf" },
-          { name: "Plant ME&I Project CV", url: "../Portfolio/cv/variants/CV_2025_Plant_MEI_Project.pdf" },
-          { name: "Automation CV", url: "../Portfolio/cv/variants/CV_2025_Automation_Control.pdf" }
+          { name: "Main CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/CV_AHlonyane_2025_Main.pdf" },
+          { name: "Instrumentation CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/variants/CV_2025_Instrumentation.pdf" },
+          { name: "Plant ME&I Project CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/variants/CV_2025_Plant_MEI_Project.pdf" },
+          { name: "Automation CV", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/cv/variants/CV_2025_Automation_Control.pdf" }
         ]
       },
       {
@@ -302,10 +262,10 @@
         description: "Details of my academic journey and qualifications from various universities.",
         role: "Category — Education",
         links: [
-          { name: "Stellenbosch University — BEng Mechatronic", url: "../Portfolio/education/tertiary/stellenbosch" },
-          { name: "Technische Universität München — Exchange", url: "../Portfolio/education/tertiary/tum" },
-          { name: "University of Pretoria — BEng (Hons) Electronic", url: "../Portfolio/education/tertiary/up" },
-          { name: "Secondary School Records", url: "../Portfolio/education/secondary/school" }
+          { name: "Stellenbosch University — BEng Mechatronic", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/tertiary/stellenbosch/2023_SU_BEng_Mechatronic.pdf" },
+          { name: "Technische Universität München — Exchange", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/tertiary/tum/2021_TUM_Exchange_Certificate.pdf" },
+          { name: "University of Pretoria — BEng (Hons) Electronic", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/tertiary/up/2025_UP_BEngHons_APC_Registration.pdf" },
+          { name: "Secondary School Records", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/education/secondary/2017_NSC_Certificate.pdf" }
         ]
       },
       {
@@ -316,10 +276,10 @@
         description: "Highlights of my professional work experiences and internships in engineering roles.",
         role: "Category — Experience",
         links: [
-          { name: "Glencore Artisan (Specialist) 2025", url: "../Portfolio/experience/glencore-artisan-2025" },
-          { name: "Glencore Engineer-in-Training 2024", url: "../Portfolio/experience/glencore-eit-2024" },
-          { name: "Glencore Instrumentation Vacation 2022", url: "../Portfolio/experience/glencore-vac" },
-          { name: "VWSA Assembly/Mechatronics 2019–2020", url: "../Portfolio/experience/vwsa-vac" }
+          { name: "Glencore Artisan (Specialist) 2025", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/glencore-artisan-2025/README.md" },
+          { name: "Glencore Engineer-in-Training 2024", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/glencore-eit-2024/README.md" },
+          { name: "Glencore Instrumentation Vacation 2022", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/glencore-vac/2022_Glencore_Vacation_Certificate.pdf" },
+          { name: "VWSA Assembly/Mechatronics 2019–2020", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/experience/vwsa-vac/2020_VWSA_Vac_Training_441.pdf" }
         ]
       },
       {
@@ -330,8 +290,8 @@
         description: "A showcase of my technical and academic projects, including control systems and final year capstone.",
         role: "Category — Projects",
         links: [
-          { name: "Charge-chute Fans Control", url: "../Portfolio/projects/charge-chute-fans" },
-          { name: "Final Year Project (FYP)", url: "../Portfolio/projects/fyp-capstone-project" }
+          { name: "Charge-chute Fans Control", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/projects/charge-chute-fans/presentations/Athenkosi_Hlonyane_Project_Presentation.pdf" },
+          { name: "Final Year Project (FYP)", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/projects/fyp-capstone-project/presentations/Progress_Presentation_21879168.pdf" }
         ]
       },
       {
@@ -342,9 +302,9 @@
         description: "List of professional courses and certificates I have completed, demonstrating continuous learning.",
         role: "Category — Certificates",
         links: [
-          { name: "IO-Link Certificate", url: "../Portfolio/certificates/io-link" },
-          { name: "Predictive Maintenance", url: "../Portfolio/certificates/predictive" },
-          { name: "IoT Introduction", url: "../Portfolio/certificates/iot-intro" }
+          { name: "IO-Link Certificate", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/certificates/io-link/2024_IO-Link_IIoT_Certificate.pdf" },
+          { name: "Predictive Maintenance", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/certificates/predictive/2024_Predictive_Maintenance_Certificate.pdf" },
+          { name: "IoT Introduction", url: "https://raw.githubusercontent.com/Athi-tronics/Portfolio/main/certificates/iot-intro/2024_IoT_Intro_Certificate.pdf" }
         ]
       },
       {
@@ -355,9 +315,9 @@
         description: "My core technical skills and evidence linking to corresponding projects and experiences.",
         role: "Category — Skills",
         links: [
-          { name: "Automation & Control", url: "../Portfolio/skills#automation" },
-          { name: "Instrumentation", url: "../Portfolio/skills#instrumentation" },
-          { name: "Projects & Governance", url: "../Portfolio/skills#projects" }
+          { name: "Automation & Control", url: "https://github.com/Athi-tronics/Portfolio/blob/main/skills/README.md#automation--control" },
+          { name: "Instrumentation", url: "https://github.com/Athi-tronics/Portfolio/blob/main/skills/README.md#instrumentation" },
+          { name: "Projects & Governance", url: "https://github.com/Athi-tronics/Portfolio/blob/main/skills/README.md#projects--governance" }
         ]
       }
     ];
@@ -424,7 +384,7 @@
           const a = document.createElement('a');
           a.href = item.url;
           a.textContent = item.name;
-          // Always open links in new tab; PDFs will load normally
+          // Always open links in new tab
           a.target = '_blank';
           li.appendChild(a);
           ul.appendChild(li);
@@ -440,26 +400,6 @@
         article.appendChild(descWrapper);
         container.appendChild(article);
       });
-    });
-
-    // PDF Modal functions
-    const pdfModal = document.getElementById('pdf-modal');
-    const pdfFrame = pdfModal.querySelector('iframe');
-    const closeBtn = pdfModal.querySelector('.close-btn');
-    function showPdfModal(url) {
-      pdfFrame.src = url;
-      pdfModal.classList.add('active');
-    }
-    function closePdfModal() {
-      pdfModal.classList.remove('active');
-      pdfFrame.src = '';
-    }
-    closeBtn.addEventListener('click', closePdfModal);
-    // Hide modal on outside click
-    pdfModal.addEventListener('click', (e) => {
-      if (e.target === pdfModal) {
-        closePdfModal();
-      }
     });
 
     // Custom cursor logic
