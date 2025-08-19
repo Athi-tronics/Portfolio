@@ -1,0 +1,3 @@
+# Registration
+
+Subfolder: `ecsa-candidate`.
