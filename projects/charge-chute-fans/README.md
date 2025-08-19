@@ -2,9 +2,9 @@
 
 **Problem:** manual changeover between main/backup fans increased downtime/risk  
 **My role:** sequenced changeover with interlocks; added HMI status/alarms  
-**Outcome:** fewer manual interventions; more reliable changeover under load
+**Outcome:** fewer manual interventions; more reliable changeover under load (simulated)
 
-## Evidence (sanitised)
+## Evidence
 - 📄 Project report: [/report/2022_ChargeChuteFans_Project_Report.pdf](./report/2022_ChargeChuteFans_Project_Report.pdf)
 - 🧩 Ladder snapshots / pseudocode (add images)
 - 🧾 Interlock table (generic tags)
