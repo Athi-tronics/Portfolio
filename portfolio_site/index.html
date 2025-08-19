@@ -32,6 +32,7 @@
     img { max-width: 100%; height: auto; display: block; }
     /* Hero Section */
     #hero {
+      position: relative;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -39,7 +40,20 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
-      background: linear-gradient(to bottom, #1a1a1a, #000);
+      background: #000;
+    }
+    #hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('img/hero-bg.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      z-index: -1;
     }
     #hero h1 {
       font-size: 3.5rem;
@@ -153,6 +167,7 @@
     .project-meta .project-links a {
       color: var(--color-link);
       text-decoration: none;
+      cursor: pointer;
     }
     .project-meta .project-links a:hover {
       text-decoration: underline;
@@ -172,6 +187,39 @@
     footer .about-link:hover {
       opacity: 0.7;
     }
+    /* PDF Modal */
+    #pdf-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #pdf-modal.active {
+      display: flex;
+    }
+    #pdf-modal iframe {
+      width: 80%;
+      height: 80%;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    #pdf-modal .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
     /* Responsive */
     @media (max-width: 768px) {
       #hero h1 { font-size: 2.5rem; }
@@ -183,7 +231,7 @@
   <header id="hero">
     <div class="hero-content">
       <h1>Athenkosi Hlonyane</h1>
-      <h2>Engineer | Automation & Control Specialist</h2>
+      <h2>Engineer | Automation &amp; Control Specialist</h2>
       <p class="hero-description">A curated portfolio showcasing my academic achievements, professional experiences, technical projects, certificates, and skills.</p>
     </div>
     <a href="#projects" class="scroll-down" aria-label="Scroll down">&darr;</a>
@@ -194,6 +242,12 @@
     <!-- Content will be injected via JavaScript -->
     <noscript>Please enable JavaScript to view the content.</noscript>
   </main>
+
+  <!-- PDF Modal -->
+  <div id="pdf-modal">
+    <button class="close-btn" aria-label="Close PDF">&times;</button>
+    <iframe src="" title="PDF Viewer"></iframe>
+  </div>
 
   <footer>
     <a href="about.html" class="about-link">About</a>
@@ -206,7 +260,7 @@
         year: "2025",
         title: "Curriculum Vitae",
         subtitle: "Latest CV & Variants",
-        image: "https://source.unsplash.com/800x600/?resume,document",
+        image: "img/cv.png",
         description: "Explore my current CV and role-focused variants tailored for different engineering roles.",
         role: "Category — CV",
         links: [
@@ -220,7 +274,7 @@
         year: "2024",
         title: "Education",
         subtitle: "Academic Qualifications",
-        image: "https://source.unsplash.com/800x600/?university,engineering",
+        image: "img/education.png",
         description: "Details of my academic journey and qualifications from various universities.",
         role: "Category — Education",
         links: [
@@ -231,22 +285,10 @@
         ]
       },
       {
-        year: "2024",
-        title: "Projects",
-        subtitle: "Technical Projects",
-        image: "https://source.unsplash.com/800x600/?engineering,project",
-        description: "A showcase of my technical and academic projects, including control systems and final year capstone.",
-        role: "Category — Projects",
-        links: [
-          { name: "Charge-chute Fans Control", url: "../projects/charge-chute-fans" },
-          { name: "Final Year Project (FYP)", url: "../projects/fyp-capstone-project" }
-        ]
-      },
-      {
         year: "2025",
         title: "Experience",
         subtitle: "Professional Experience",
-        image: "https://source.unsplash.com/800x600/?industrial,work",
+        image: "img/experience.png",
         description: "Highlights of my professional work experiences and internships in engineering roles.",
         role: "Category — Experience",
         links: [
@@ -258,9 +300,21 @@
       },
       {
         year: "2024",
+        title: "Projects",
+        subtitle: "Technical Projects",
+        image: "img/projects.png",
+        description: "A showcase of my technical and academic projects, including control systems and final year capstone.",
+        role: "Category — Projects",
+        links: [
+          { name: "Charge-chute Fans Control", url: "../projects/charge-chute-fans" },
+          { name: "Final Year Project (FYP)", url: "../projects/fyp-capstone-project" }
+        ]
+      },
+      {
+        year: "2024",
         title: "Certificates",
         subtitle: "Professional Courses",
-        image: "https://source.unsplash.com/800x600/?certificate,engineering",
+        image: "img/certificates.png",
         description: "List of professional courses and certificates I have completed, demonstrating continuous learning.",
         role: "Category — Certificates",
         links: [
@@ -273,7 +327,7 @@
         year: "2024",
         title: "Skills",
         subtitle: "Skillset & Evidence",
-        image: "https://source.unsplash.com/800x600/?skills,automation",
+        image: "img/skills.png",
         description: "My core technical skills and evidence linking to corresponding projects and experiences.",
         role: "Category — Skills",
         links: [
@@ -346,7 +400,15 @@
           const a = document.createElement('a');
           a.href = item.url;
           a.textContent = item.name;
-          a.target = '_blank';
+          // Determine whether to open PDF in modal
+          if (a.href.endsWith('.pdf')) {
+            a.addEventListener('click', (e) => {
+              e.preventDefault();
+              showPdfModal(a.href);
+            });
+          } else {
+            a.target = '_blank';
+          }
           li.appendChild(a);
           ul.appendChild(li);
         });
@@ -361,6 +423,26 @@
         article.appendChild(descWrapper);
         container.appendChild(article);
       });
+    });
+
+    // PDF Modal functions
+    const pdfModal = document.getElementById('pdf-modal');
+    const pdfFrame = pdfModal.querySelector('iframe');
+    const closeBtn = pdfModal.querySelector('.close-btn');
+    function showPdfModal(url) {
+      pdfFrame.src = url;
+      pdfModal.classList.add('active');
+    }
+    function closePdfModal() {
+      pdfModal.classList.remove('active');
+      pdfFrame.src = '';
+    }
+    closeBtn.addEventListener('click', closePdfModal);
+    // Hide modal on outside click
+    pdfModal.addEventListener('click', (e) => {
+      if (e.target === pdfModal) {
+        closePdfModal();
+      }
     });
   </script>
 </body>
