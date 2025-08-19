@@ -1,6 +1,6 @@
 # Athenkosi Hlonyane — Engineering Portfolio
 
-Every claim on my CV links here with short context + evidence. All artifacts are sanitised (no plant IP, credentials, or personal IDs).
+A concise portfolio of my work, studies, and projects—each with brief context and supporting documents linked from my CV.
 
 > Jump directly ↓
 
