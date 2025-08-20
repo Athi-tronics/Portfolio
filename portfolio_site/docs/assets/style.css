@@ -1,6 +1,0 @@
-.main-content a { text-decoration: none; border-bottom: 1px solid rgba(0,0,0,.2); }
-.main-content a:hover { border-bottom-color: rgba(0,0,0,.6); }
-.badge { display:inline-block; padding:.2rem .5rem; border-radius:.4rem; font-size:.8rem; background:#e8eefc; }
-.grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-.card{ padding:14px; border-radius:10px; background:#ffffffcc; box-shadow:0 6px 18px rgba(0,0,0,.06); }
-footer { opacity:.7; font-size:.85rem; margin-top:2rem; }
