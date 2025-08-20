@@ -1,0 +1,65 @@
+/* Self-hosted fonts: Kumlien Pro + Aktiv Grotesk */
+/* Paths are relative to this file (assets/css/fonts.css) */
+@font-face{
+  font-family: "Kumlien Pro";
+  src: url("../../fonts/kumlien-pro-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Kumlien Pro";
+  src: url("../../fonts/kumlien-pro-italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Kumlien Pro";
+  src: url("../../fonts/kumlien-pro-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Kumlien Pro";
+  src: url("../../fonts/kumlien-pro-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Kumlien Pro Condensed";
+  src: url("../../fonts/kumlien-pro-condensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Aktiv Grotesk";
+  src: url("../../fonts/AktivGrotesk-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Aktiv Grotesk";
+  src: url("../../fonts/AktivGrotesk-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Aktiv Grotesk";
+  src: url("../../fonts/AktivGrotesk-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Aktiv Grotesk";
+  src: url("../../fonts/AktivGrotesk-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
